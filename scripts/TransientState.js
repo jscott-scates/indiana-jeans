@@ -31,4 +31,7 @@ export const saveSurveySubmission = async() => {
         body: JSON.stringify(transientState)  
     }
     const response = await fetch("http://localhost:8088/submissions", postOptions)
+
+    const customEvent = new CustomEvent("newSubmissionCreated")
+    document.dispatchEvent(customEvent)  //does not do anything in of itself, is a step towards listing for the custom event Ignored until something is listening for it.
 }
